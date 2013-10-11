@@ -1,0 +1,26 @@
+# The `common' part is automatically included (and possibly overriden by all
+# other flavors)
+common:
+    s3_access_key: _env:S3_ACCESS_KEY
+    s3_secret_key: _env:S3_SECRET_KEY
+    s3_bucket: _env:S3_BUCKET
+    s3_region: EU
+    secret_key: 35r324fsf
+    standalone: true
+
+# This is the default configuration when no flavor is specified
+dev:
+    storage: local
+    storage_path: /tmp/registry
+    loglevel: debug
+
+# To specify another flavor, set the environment variable SETTINGS_FLAVOR
+# $ export SETTINGS_FLAVOR=prod
+prod:
+    storage: s3
+    storage_path: /docker_registry
+
+# This flavor is automatically used by unit tests
+test:
+    storage: local
+    storage_path: /tmp/test

@@ -8,6 +8,6 @@ ADD start_mariadb.sh start_mariadb.sh
 ADD mysql/my.cnf /etc/mysql/my.cnf
 RUN mkdir /data
 
-EXPOSE 3600:3600
+EXPOSE 3306:3306
 
 CMD /start_mariadb.sh

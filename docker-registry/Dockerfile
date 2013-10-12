@@ -9,7 +9,6 @@ ADD conf/registry/config.yml /docker-registry/config.yml
 ADD conf/nginx /etc/nginx/conf.d
 RUN rm -f /etc/nginx/sites-enabled/*
 
-EXPOSE 80:80
-EXPOSE 443:443
+EXPOSE 5000:80
 
 CMD nginx && cd /docker-registry && ./setup-configs.sh && export SETTINGS_FLAVOR=prod && gunicorn -k gevent --max-requests 100 --graceful-timeout 3600 -t 3600 -b localhost:5000 -w 8 wsgi:application

@@ -15,7 +15,7 @@ server {
 
         error_page 500 502 503 504 /50x.html;
         location = /50x.html {
-              root /usr/share/nginx/www;
+              root /wordpress;
         }
 
         # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9$

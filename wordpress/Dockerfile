@@ -1,4 +1,4 @@
-FROM janstenpickle/nginx
+FROM janstenpickle:5000/nginx
 
 RUN sed -i 's/main$/main universe/' /etc/apt/sources.list && apt-get update && apt-get install -y --no-install-recommends wget php5-mysql php5-fpm curl
 RUN wget http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz 
@@ -10,3 +10,5 @@ RUN cat /tmp/wp-config.php.top.erb > /etc/puppet/templates/wp-config.php.erb && 
 ADD start_wp.sh /start_wp.sh
 
 EXPOSE 80:80
+
+CMD /start_wp.sh

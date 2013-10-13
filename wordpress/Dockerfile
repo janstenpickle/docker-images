@@ -10,5 +10,6 @@ RUN cat /tmp/wp-config.php.top.erb > /etc/puppet/templates/wp-config.php.erb && 
 ADD start_wp.sh /start_wp.sh
 
 EXPOSE 80:80
+EXPOSE 443:443
 
 CMD /start_wp.sh

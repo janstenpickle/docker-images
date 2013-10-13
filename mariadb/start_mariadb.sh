@@ -12,9 +12,13 @@ fi
 
 su - mysql -s /bin/bash -c mysqld_safe &
 
-sleep 3
 
-echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.%.%' WITH GRANT OPTION;" | mysql
+STATUS=1
+while [ "x$STATUS" != "x0" ]; do
+  sleep 2
+  echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.%.%' WITH GRANT OPTION;" | mysql
+  STATUS=$?
+done
 
 while true; do
   sleep 1000
